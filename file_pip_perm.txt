@@ -66,12 +66,40 @@ rm -r hi/ -> remove directory(folder) on your pc
 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
 
 
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+🔴rm -i file*
+🔴    -> ask you to delete or not
+🔴    -> rm: remove regular empty file 'file\'? y
+🔴       rm: remove regular empty file 'file10.txt'? y
+🔴       rm: remove regular empty file 'file11.txt'? n
+🔴       rm: remove regular empty file 'file12.txt'? n
+🔴       rm: remove regular empty file 'file13.txt'? ^C
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+🔴ls -> bounch of files
+🔴    file13.txt   file21.txt   file2.txt    filea.txt        filei.txt   filer.txt    filez.txt
+🔴    file14.txt   file22.txt   file30.txt   fileb.txt        filej.txt   files.txt
+🔴    file15.txt   file23.txt   file3.txt   'file cool.txt'   filek.txt   filet.txt
+🔴    file16.txt   file24.txt   file4.txt    filec.txt        filel.txt  'file\.txt'
+🔴    file17.txt   file25.txt   file5.txt    filed.txt        filem.txt   fileu.txt
+🔴    file18.txt   file26.txt   file6.txt    filee.txt        filen.txt   filev.txt
+🔴
+🔴yes n | rm -i file*
+🔴    -> auto answering all files no 
+🔴
+🔴yes y | rm -i file*
+🔴    -> auto answering all files YES
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+
+
 
 * copy file * 
 touch a.txt -> create a.txt file
 cp a.txt b.txt -> copy a.txt to b.txt
 cp -R thisFolderName toThisFolderName -> R mean recursive, one folder copy to anoter folder
-* both cp example second argument create new file & folder *
+* both cp example second aile1.txt
+rgument create new file & folder *
 
 
 
@@ -81,9 +109,7 @@ mv hi anotherFolder -> hi folder to move another foler
 
 
 
-* compress file *
-tar -cf archive.tar text.txt folder1 -> (not compressed) inside of folder many files
-tar -zcf archive.tar.gz text.txt folder1 -> (compressed) check size to ls -lsah
+* compress file *ile1.txt
 
 * extract compress file *
 mkdir desti -> 
@@ -95,11 +121,115 @@ tar -xzf archive.tar.gz -C desti/ ->
 
 mkdir folder2
 cd folder2
-touch file(1, 2, 3, 4).txt // filet1.txt, file2.txt, file3.txt, file4.txt
-touch file(mn, wa, mt, ut).txt // filetmn.txt, filewa.txt, filemt.txt, fileut.txt
-ls file-* -> matching
-ls file* -> 
-ls file? -> 
+touch file{1,2,3,4}.txt // filet1.txt, file2.txt, file3.txt, file4.txt
+touch file-{aa,bb,cc,dd}.txt // filet-aa.txt, file-bb.txt, file-cc.txt, file-dd.txt
+ls file-* -> file-aa.txt  file-bb.txt  file-cc.txt  file-dd.txt
+ls file* -> all result
+ls file? -> after file at last 1 letter found output:(file1.txt  file2.txt  file3.txt  file4.txt)
+ls file-?? -> after file at last 2 letter found output:(file-aa.txt  file-bb.txt  file-cc.txt  file-dd.txt)
+
+touch file{1..30}.txt -> create 30 files
+touch file{a..z}.txt -> create file last letter a to z
+touch file\ cool.txt -> 'file cool.txt'
+touch file\\.txt -> 'file\.txt'
+
+echo {a..z} -> a b c d e f g h i j k l m n o p q r s t u v w x y z
+echo {a..z..2} -> (odd number) a c e g i k m o q s u w y
+echo {1..100..10} -> 1 11 21 31 41 51 61 71 81 91
+echo {0..100..10} -> 0 10 20 30 40 50 60 70 80 90 100
+echo {a..Z..10} -> a
+echo {A..z..10} -> A K U _ i s
+echo {a..d}{1..5} -> a1 a2 a3 a4 a5 b1 b2 b3 b4 b5 c1 c2 c3 c4 c5 d1 d2 d3 d4 d5
+echo {a..c}{1..4}{1..2} -> a11 a12 a21 a22 a31 a32 a41 a42 b11...
 
 
 
+
+**** output stream ****
+
+echo 'this is a stream' 1> new-file.txt
+    -> redirecting the string into new-file.txt
+
+cat new-file.txt 1> another-file.txt
+    -> left side file text assign to new created another-file.txt
+    -> "1>" replace the file text
+    -> ">" replace the file text
+
+cat new-file.txt 2> another-file.txt
+    -> "2>" append the file text
+    -> ">>" append the file text
+
+
+ls -lsah 1> ls.txt
+    -> output is assgin in ls.txt file
+
+ls 1> ls.txt
+    -> output is assgin in ls.txt file
+
+cat non-existant-file.txt 1> cat.txt
+    -> left side not existant file
+    -> right side create a empty file
+
+ls 1> ls.txt -> one angle bracket redirect standard out
+ls 2> ls.txt -> two angle bracket redirect standard error
+
+cat ls.txt 2> /dev/null
+    -> /dev/null is specifically for, i don't care about whatever ig goin g into here
+
+
+
+
+**** input stream ****
+
+cat ls.txt
+    -> output is 
+       total 20K
+       4.0K drwxrwxr-x  2 aman aman 4.0K Sep  9 15:59 .
+       4.0K drwxr-xr-x 34 aman aman 4.0K Sep  9 15:21 ..
+       4.0K -rw-rw-r--  1 aman aman   39 Sep  9 15:51 abc.txt
+       4.0K -rw-rw-r--  1 aman aman   34 Sep  9 15:27 another-file.txt
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:59 ls.txt
+       4.0K -rw-rw-r--  1 aman aman   17 Sep  9 15:21 new-file.txt
+       total 24K
+       4.0K drwxrwxr-x  2 aman aman 4.0K Sep  9 15:59 .
+       4.0K drwxr-xr-x 34 aman aman 4.0K Sep  9 15:21 ..
+       4.0K -rw-rw-r--  1 aman aman   39 Sep  9 15:51 abc.txt
+       4.0K -rw-rw-r--  1 aman aman   34 Sep  9 15:27 another-file.txt
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+       4.0K -rw-rw-r--  1 aman aman  402 Sep  9 15:59 ls.txt
+       4.0K -rw-rw-r--  1 aman aman   17 Sep  9 15:21 new-file.txt
+
+grep "ls-error.txt" < ls.txt
+    -> output is down below (ls-error.txt <- THIS TEXT IS SHOW RED COLOR BECAUSE : THIS RUNNING THROUGH A PIPE - EASY TO HUMAN REDABLE (METALIC COLOR))
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+
+grep "ls-error.txt" < ls.txt 1> grep.txt 2> /dev/null
+cat grep.txt
+    -> output is down below (ls-error.txt <- THIS TEXT IS SHOW LIKE A NORMAL TEST )
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+
+
+
+
+**** input stream ****
+
+cat ls.txt | grep "ls-error.txt"
+    -> using piping to grap this text.
+    -> 0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+       0 -rw-rw-r--  1 aman aman    0 Sep  9 15:58 ls-error.txt
+
+ps aux | grep "ps aux"
+    -> "ps aux" in red color
+    -> aman       16740  0.0  0.0  20116  3340 pts/2    R+   16:26   0:00 ps aux
+       aman       16741  0.0  0.0  17532   656 pts/2    S+   16:26   0:00 grep --color=auto ps aux
+
+ps aux | grep "yes"
+    -> "yes" in red color
+    -> aman       16787 99.8  0.0  16708   520 pts/2    R    16:27   0:35 yes
+       aman       16808  0.0  0.0  17532   736 pts/2    S+   16:28   0:00 grep --color=auto yes
+
+kill -9 16787
+    -> kill "yes" PROCESS IN PROCESSOR
