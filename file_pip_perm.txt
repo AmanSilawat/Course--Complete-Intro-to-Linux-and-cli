@@ -1,0 +1,105 @@
+***** File Pipes & Permission *****
+
+* less 'fileName withExtension' *
+press    less text.txt    in terminal
+
+q to quite
+
+
+
+* man less *
+  ^ ^ ^ ^ ^ terminal comman
+  man mean manual
+
+  long description of less
+
+
+
+
+* cat fileNameWithExtension *
+result show in terminal concat the file
+
+
+
+* tail fileNameWithExtension *
+result show in terminal last 10 lines
+tail -n 3 text.txt -> display only last 3 line
+
+
+
+* head fileNameWithExtension *
+result show in terminal first 10 lines
+head -n 3 text.txt -> display only first 3 line
+
+
+* echo append in text.txt file (change real time) *
+tail -f text.txt    -> uniqe tab
+echo hi >> text.txt -> uniqe tab
+
+
+
+mkdir my-new-folder -> make my new folder
+mkdir -p my/name/is/ -> create nested folder in one line code
+mkdir --help
+
+
+
+
+touch text.txt -> does not exesing file than create a file
+touch text.txt -> does exesing file than mean changin this file 
+
+
+
+* remove file (WARNNING) *
+rm text.txt -> remove this file on your pc 
+
+
+
+* remove directory (WARNNING) *
+rm -r hi/ -> remove directory(folder) on your pc 
+
+
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+🔴* remove every thing (DON'T TRY THIS) *
+🔴 rm -rf *
+🔴 rm -rf /
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+
+
+
+* copy file * 
+touch a.txt -> create a.txt file
+cp a.txt b.txt -> copy a.txt to b.txt
+cp -R thisFolderName toThisFolderName -> R mean recursive, one folder copy to anoter folder
+* both cp example second argument create new file & folder *
+
+
+
+* move file *
+mv hi anotherFolder -> hi folder to move another foler
+
+
+
+
+* compress file *
+tar -cf archive.tar text.txt folder1 -> (not compressed) inside of folder many files
+tar -zcf archive.tar.gz text.txt folder1 -> (compressed) check size to ls -lsah
+
+* extract compress file *
+mkdir desti -> 
+mv archive.tar.gz extracted/ ->
+cd extracted/ ->
+mkdir desti ->
+tar -xzf archive.tar.gz -C desti/ ->
+
+
+mkdir folder2
+cd folder2
+touch file(1, 2, 3, 4).txt // filet1.txt, file2.txt, file3.txt, file4.txt
+touch file(mn, wa, mt, ut).txt // filetmn.txt, filewa.txt, filemt.txt, fileut.txt
+ls file-* -> matching
+ls file* -> 
+ls file? -> 
+
+
+

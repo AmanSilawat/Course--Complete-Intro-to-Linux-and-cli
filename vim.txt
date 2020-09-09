@@ -1,0 +1,10 @@
+this is a vim file
+after write your code
+
+follw this step
+
+Press Esc key: This is very important, because you must exit the edit mode first before typing the exit command(s). Next, you can type one of the following commands:
+:q (yes, the colon is included in the command) – This will quit the editor
+:q! – Quit Vim without saving the data file
+:wq – Save the file and exit Vim
+And then press the Enter key

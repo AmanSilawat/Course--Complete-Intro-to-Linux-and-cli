@@ -1,0 +1,5 @@
+This is a nano file.
+
+open terminal and goto this directory and type
+
+nano `fileName` -> to open GNU nano editor
