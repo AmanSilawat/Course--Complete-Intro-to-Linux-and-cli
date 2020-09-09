@@ -90,7 +90,44 @@ rm -r hi/ -> remove directory(folder) on your pc
 🔴
 🔴yes y | rm -i file*
 🔴    -> auto answering all files YES
-🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴
+
+
+
+-> goto home directory
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴
+🔴rm -rf /
+🔴  -> output is
+🔴  -> rm: it is dangerous to operate recursively on '/'
+🔴  -> rm: use --no-preserve-root to override this failsafe
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> NOT 100% SURE DELETE YOUR DATA WITHOUT PERMISSION
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴
+
+
+
+-> goto home directory
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴
+🔴rm -rf UserName -> syntax
+🔴rm -rf aman -> 100% working (DELETE YOUR ALL DATA)
+🔴  -> output is
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴  -> DON'T TRY THIS
+🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴 🔴
+
+
+
 
 
 
@@ -233,3 +270,108 @@ ps aux | grep "yes"
 
 kill -9 16787
     -> kill "yes" PROCESS IN PROCESSOR
+
+
+
+
+
+
+**** Principle of Latest Power ****
+
+whoami -> aman
+cat /etc/passwd -> track all different user
+
+
+
+**** Superuser *both line are equal
+both line are equal
+both line are equal
+both line are equal***
+
+sudo whoami -> root
+sudo mkdir hi -> make folder in root directory
+
+sudo su -> switch user to root
+whoami -> root
+exit -> release your power (end session)
+
+* add new user *
+sudo useradd aks -> 
+sudo passwd aks -> 
+    -> New password: 
+       Retype new password: 
+       passwd: password updated successfully
+su aks -> switch the usersudo echo hi
+[sudo] password for aks: 
+Sorry, try again.
+[sudo] password for aks: 
+aks is not in the sudoers file.  This incident will be reported
+
+sudo echo hi ->
+    -> [sudo] password for aks: 
+    -> aks is not in the sudoers file.  This incident will be reported
+exit -> exit the session
+
+
+
+* add Permission to new user *
+sudo usermod -aG sudo aks -> this user add to the sudo group
+
+
+
+* Group Permission *
+
+su aks -> switch user
+vi another-file.txt -> not write Permission
+vi another-file.txt -> not write Permission
+
+definition of Permission ***************
+rwx - this means that this can be read, written to or executed by user
+--x - x is main user
+
+d--------- - directory
+-rwx------ - Main user to access this
+----rwx--- - Group of user to access this
+-------rwx - everyone else group and main user
+---------x - not executed by group
+
+
+* => both line are equal <= *
+=> sudo chmod u=rwx,g=rwx,o=rwx ab.txt -> user,group and other are read, write and execute this file
+=> sudo chmod 777 ab.txt
+
+* => both line are equal <= *
+=> sudo chmod 667 ab.txt
+=> u=rw,g=rw,o=rwx
+
+* => both line are equal <= *
+=> sudo chmod 700 ab.txt
+=> u=rwx,g=,o=
+
+* => both line are equal <= *
+=> sudo chmod 600 ab.txt
+=> u=rw,g=,o=
+
+* => both line are equal <= *
+=> sudo chmod 640 ab.txt
+=> u=rw,g=r,o=
+
+* => both line are equal <= *
+=> sudo chmod 664 ab.txt
+=> u=rw,g=rw,o=r
+
+* => sorthand Permission <= *
+=> sudo chmod +x ab.txt
+=> all execute Permission are allow
+
+* => sorthand Permission <= *
+=> sudo chmod -x ab.txt
+=> all execute Permission are disallow
+
+* => sorthand Permission <= *
+=> sudo chmod +w ab.txt
+=> all execute Permission are allow
+
+* => sorthand Permission <= *
+=> sudo chmod -w ab.txt
+=> all execute Permission are disallow

@@ -1,0 +1,23 @@
+echo $USER -> aman
+echo hello my name is $USER -> echo hello my name is aman
+
+$greeting="greet" ->
+ehco #greeting aman -> greet aman
+
+** Processor **
+ps -> Processor : ubuntu currently running
+
+spleep 1 ->
+spleep 10 ->
+sleep 100 & -> this Processor added in Processor
+ps -> inside of a new add process
+kill -SIGKILL 24631 -> to kill this "sleep 100 & " Processor
+
+ps aux -> every thing in list of process
+ps aux | less -> 
+ps aux | grep ps -> hight ps in process list
+
+sleep 1000 -> long process (ctrl + z to exit)
+jobs -> what's process is running
+jobs -l -> running process uid
+kill -9 25073 -> kill running process
