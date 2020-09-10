@@ -21,3 +21,40 @@ sleep 1000 -> long process (ctrl + z to exit)
 jobs -> what's process is running
 jobs -l -> running process uid
 kill -9 25073 -> kill running process
+
+
+
+** Exit code **
+
+echo $? -> 0 (means it was successful. Anything other than 0 means it failed)
+yes -> ctrl + c (stop)
+echo $? -> 130 (you ended the program with ctrl + c)
+
+touch status.txt && date >> status.txt && uptime >> status.txt ->
+le ->
+cat status.txt
+    -> Thursday 10 September 2020 12:58:51 PM IST
+       12:58:51 up  2:55,  1 user,  load average: 1.06, 1.07, 0.85
+uptime -> 12:59:41 up  2:56,  1 user,  load average: 0.50, 0.92, 0.81
+
+
+false ->
+echo $? -> 1 (a good general catch-all "there was an error")
+
+false && echo hi -> NOTHING PRINT
+true && echo hi -> hi
+
+false || echo hi -> hi
+true || echo hi -> NOTHING PRINT
+
+true ; false ; echo hi -> hi
+
+
+** subcommands **
+
+echo i think $(whoami) is a really cool user -> i think aman is a really cool user
+echo the current date is $(date) -> the current date is Thursday 10 September 2020 01:16:53 PM IST
+echo $(date +%x) - $(uptime) >> log.txt ->
+cat log.txt -> 10/09/20 - 13:18:43 up 3:15, 1 user, load average: 0.58, 0.74, 0.74
+
+echo hi $(cat < log.txt) user -> ...
