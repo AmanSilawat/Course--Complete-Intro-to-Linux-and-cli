@@ -1,0 +1,52 @@
+** Package Management & apt bacics **
+
+apt( advance packaging tool)
+sudo apt install aptitude -> Aptitude is front-end to advanced packaging tool. search for a package and install or remove it. Aptitude extends its functionality to RPM based
+
+apt-get install -> old pattern
+apt install -> new pattern
+
+apt install lolcat -> not permission granted
+sudo !! -> run previeus command with sudo (bang bang explanation symbol)
+lolcat --help -> output is show in color full text.
+ls -lsah | lolcat -> always run all command with lolcat
+
+
+node -> 
+node -e "console.log('hello from node')" ->(e mean -execute code) hello from node
+apt search nodejs -> 
+apt show nodejs -> all of info. nodejs
+apt show lolcat -> all of info. lolcat
+sudo apt autoremove -> download of list packages in your computer
+apt list -> installed apt list in your pc
+sudo apt full-upgrade -> auto remove and upgrade at the same time.
+
+
+
+** APT Q&A **
+sudo apt upgrade nodejs
+    -> upgrade a nodejs package
+
+sudo apt update
+    -> get a new version of registory.
+    -> all the latest version of the packages
+    -> this is not upgrade any package.
+    -> it updates the available packages that APT has to go get.
+
+
+
+** snaps **
+
+(install only trusted packages) -  snaps
+
+sudo apt remove lolcat -> remove
+sudo snap install lolcat -> snap lolcat is bigger because include all dependancy in one packages
+
+ls -lsah | lolcat -> No such file or directory
+    -> this particular terminal session won't have lolcat installed yet.
+    -> open new tab or reopen the terminal
+
+
+sudo apt remove nodejs -> remove after reinstall specify version of node
+snap info node -> list of all version stable version or not
+sudo snap install --channel=14/stable --classic node

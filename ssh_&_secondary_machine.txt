@@ -1,0 +1,55 @@
+multipass launch --name secondary -> set secondary computer
+sudo useradd -s /bin/bash -m -g ubuntu aman
+sudo passwd aman -> add password
+su brian -> switch useradd
+cd home -> 
+ls -> 
+
+** linking two machines with SSH **
+* SSH key is this like cryptographic key4 that basically creates a private version and public version of it. *
+
+
+
+
+** SFTP **
+sftp brian@192.168.34.3 -> connected to 192.168.34.3
+
+------ local
+pwd -> /home/brian
+lls -> list of files
+put status.txt -> put from local computer to secondary computer
+------ local
+
+
+------ secondary
+!echo "hello is brian" >> file-to-put.txt -> create a file (! mark to run command to my local computer)
+!cat file-to-put.txt
+------ secondary
+
+
+------ local
+put file-to-put.txt -> uploding to secondary
+------ local
+
+
+------ secondary
+get status.txt file-to-put.txt -> dowload the local computer
+exit -> exit to secondary server
+------ secondary
+
+
+
+** Wget **
+wget https://raw.githubusercontent.com/btholt/bash2048/master/bash2048.sh
+chmod 700 bash2048.sh
+. bash2048.sh -> ctrl + c to exit
+
+
+
+** curl Basics **
+curl curl https://raw.githubusercontent.com/btholt/bash2048/master/bash2048.sh > game.sh
+    -> find game.sh file
+
+
+** curl & http verbs **
+???
