@@ -1,0 +1,298 @@
+***  Writing Scripts ***
+
+vi gen_files.sh -> below code write inside of the file.
+    -> mkdir -p ~/temp # -p mean don't error if it exists in this case, it does other things too
+    -> cd ~/temp
+    -> touch file{1..10}.txt
+    -> echo done
+
+source gen_files.sh -> output: done
+ls -> inside of 10 folders
+
+. gen_files.sh -> current directory
+bash gen_files.sh -> bash is a creating a sub-process, sub-process will change directories.
+
+
+
+***  Hashbang ***
+------ groupt 1
+vi gen_files.sh -> below code write inside of the file.
+    -> #! /bin/bash                   (#! this is a shell script)
+    -> mkdir -p ~/temp # -p mean don't error if it exists in this case, it does other things too
+    -> cd ~/temp
+    -> touch file{1..10}.txt
+    -> echo done
+
+mv gen_files.sh gen_files ->
+chmod +x gen_files ->
+./gen_files -> done
+------ groupt 1
+
+
+------ groupt 2
+which node -> /usr/bin/node
+vi node_test -> create new file and add some test in below 
+    -> #! /usr/bin/node
+    -> console.log("this is running from node.js");
+
+chmod +x node_test -> change execute permission
+./node_test -> run the file
+------ groupt 2
+
+
+------ groupt 3
+echo $PATH -> /usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin
+ls /snap/bin -> some files inside of path
+
+
+mkdir my_bin ->
+mv node_test my_bin/ ->
+mv gen_files my_bin/ ->
+cd my_bin/ ->
+ls -> (two files inside of the folder) gen_files  node_test
+cd .. ->  one directory back
+vi .bashrc -> code in below
+    -> (add a line on bottom side ) 
+    -> PATH=~/my_bin:$PATH
+    -> (:wq!   - save and exit) 
+
+echo $PATH -> /home/aman/my_bin...more paths
+gen_files -> output : done : and or create files inside of my_bin folder
+------ groupt 3
+
+
+------ groupt 4
+vi gen_files.sh -> below code write inside of the file.
+    -> #! /bin/bash                   (#! this is a shell script)
+
+    -> DESTINATION=$1 ($0-mean gen_file, $1 another file)
+    -> FILE_PREFIX=file
+    -> 
+    -> mkdir -p $DESTINATION
+    -> cd $DESTINATION
+    -> 
+    -> # this is a comment
+    -> 
+    -> touch ${FILE_PREFIX}{1..10}.txt
+    -> echo done # this an echo
+
+gen_files ~/yet-different-folder -> shell script run on yet-different-folder
+cd yet-different-folder/ ->
+ls  -> output is ...
+    -> file10.txt  file2.txt  file4.txt  file6.txt  file8.txt
+    -> file1.txt   file3.txt  file5.txt  file7.txt  file9.txt
+------ groupt 4
+
+
+
+------ groupt 5  Arguments
+vi my_bin/gen_files -> below code write inside of the file.
+    -> #! /bin/bash                   (#! this is a shell script)
+
+    -> DESTINATION=$1 ($0-mean gen_file, $1 another file)
+    -> read -p "enter a file prefix: " FILE_PREFIX
+    -> 
+    -> mkdir -p $DESTINATION
+    -> cd $DESTINATION
+    -> 
+    -> # this is a comment
+    -> 
+    -> touch ${FILE_PREFIX}{1..10}.txt
+    -> echo done # this an echo
+
+gen_files still-different-folde -> output below
+    -> enter a file prefix: frontendmasters
+        -> done
+
+cd still-different-folder/ ->
+ls -> frontendmasters10.txt  frontendmasters3.txt  frontendmasters6.txt  frontendmasters9.txt
+      frontendmasters1.txt   frontendmasters4.txt  frontendmasters7.txt
+      frontendmasters2.txt   frontendmasters5.txt  frontendmasters8.txt
+------ groupt 5
+
+
+
+
+------ groupt 6 conditional: if Statements & test
+vi my_bin/gen_files -> below code write inside of the file.
+    -> #! /bin/bash                   (#! this is a shell script)
+
+    -> DESTINATION=$1 ($0-mean gen_file, $1 another file)
+    -> read -p "enter a file prefix: " FILE_PREFIX
+    -> 
+    -> if [ -z $DESTINATION ]; then        #-z mean empty string is provided then
+    ->    echo "no path provided, defaulting to ~/temp"
+    ->    DESTINATION=temp
+    -> fi
+    -> 
+    -> mkdir -p $DESTINATION
+    -> cd $DESTINATION
+    -> 
+    -> # this is a comment
+    -> 
+    -> touch ${FILE_PREFIX}{1..10}.txt
+    -> echo done # this an echo
+
+test -z '' -> 
+echo $? -> 0    (0 mean empty string)
+
+test -z lol -> 
+echo $? -> 1    (1 because -z is not empty)
+
+test --help -> expression help
+man test -> description of test
+
+gen_files ->
+    -> enter a file prefix: lol
+    -> no path provided, defaulting to ~/temp
+    -> done
+
+cd temp ->
+ls -> file10.txt  file3.txt  file6.txt  file9.txt  lol2.txt...
+------ groupt 6
+
+
+
+------ groupt 7
+CONDITIONAL OPERATER IN SHELL SCRIPTING
+=       => equal
+-eq     => equal
+-gt     => greater than
+-lt     => less than
+-ge     => greater than equal to
+-le     => less than equal to
+-e      => exist
+-w      => file exist and writable
+
+test 15 -eq 15
+ehco $? -> 0 mean true
+
+test 15 -eq 14
+ehco $? -> 1 mean false
+
+test 15 -eq 14 && echo is true -> left conditional is false
+test 15 -eq 15 && echo is true -> left conditional is true than right is execute
+
+test brian = brian && echo is true -> is true
+test brian = march && echo is true -> (false)
+
+test 15 -gt 14 && echo is true -> is true
+test 15 -lt 14 && echo is true -> (false)
+
+test 15 -ge 14 && echo is true -> is true
+test 15 -le 14 && echo is true -> (false)
+
+test -e ~/file1.txt && echo is true -> is true
+test -e ~/file1.txt && echo is true -> (false)
+
+test -w ~/file1.txt && echo is true -> is true
+test -w ~/bin/ls && echo is true -> (false)
+------ groupt 7
+
+
+
+
+------ groupt 8 (else, else if & switch case)
+cd my_bin
+touch check_number
+chmod +x check_number
+vi check_number
+    -> #! /bin/bash
+    -> 
+    -> if [ $1 -gt 10 ]; then
+    ->         echo 'greater than ten'
+    -> elif [ $1 -lt 10 ]; then
+    ->         echo "less than 10"
+    -> else
+    ->         echo "equals 10"
+    -> fi
+
+check_number 9 -> less than 10
+check_number 10 -> equal 10
+check_number 11 -> greater than 10
+------ groupt 8
+
+
+------ groupt 9 (SWITCH CASE)
+touch smiley
+chmod +x smiley
+vi smiley
+    -> #! /bin/bash
+    -> 
+    -> case $1 in 
+    ->      "smile")
+    ->          echo ":)"    
+    ->          ;;
+    ->      "sad")
+    ->          echo ":("
+    ->          ;;
+    ->      "laugh")
+    ->          echo ":D"
+    ->          ;;
+    ->      *)
+    ->          "I don't know that one yet!"
+    ->          ;;
+    -> esac
+
+smiley sad -> :(
+smiley laugh -> :D
+smiley smile -> :)
+------ groupt 9
+
+
+
+------ groupt 10 (LOOP & ARRAY)
+touch friends
+chmod +x friends
+vi friends
+    -> #! /bin/bash
+    -> 
+    -> friends=(Kyle Marc Jem"Brian Holt" Sarah)
+    -> echo My second friend is ${friends[1]}
+    -> 
+    -> for friend in ${friends[*]}
+    -> do
+    ->      echo friend: $friend
+    -> done
+    -> 
+    -> echo "I have ${#friends[*]} friends"
+
+friends -> output below
+    -> My second friend is Marc      || CHANGE TO: ${friends[3]}, OUTPUT: My second friend is Brian Holt
+       friend: Kyle
+       friend: Marc
+       friend: Jem
+       friend: Brian
+       friend: Holt
+       friend: Sarah
+       I have 5 friends
+
+
+
+
+
+------ groupt 11 (LOOP)
+touch guess
+chmod +x guess
+vi guess
+    -> #! /bin/bash
+    -> 
+    -> NUM_TO_GUESS=$(( $RANDOM % 10 + 1 ))    #DOUBLE BRACKAT: PERFORM MATH CALCULATION
+    -> GUESS_NUM=0
+    -> 
+    -> echo "guess a number between 1 and 10"
+    -> while [ $NUM_TO_GUESS -ne $GUESS_NUM ]
+    -> do
+    ->      read -p "your guess: " GUESS_NUM
+    -> done
+    -> echo "you got it!"
+
+guess
+guess a number between 1 and 10
+your guess: 1
+your guess: 2
+your guess: 3
+your guess: 4
+your guess: 5
+you got it!
+------ groupt 11 (LOOP)
