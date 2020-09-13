@@ -1,0 +1,111 @@
+ ** cron **
+decription: The Cron daemon is a built-in Linux utility that runs processes on your system at a scheduled time. Cron reads the crontab (cron tables) for predefined commands and scripts. By using a specific syntax, you can configure a cron job to schedule scripts or other commands to run automatically.
+
+group 1 start ----------
+cd my_bin/
+vi make_new_file->
+    ->
+
+chmod +x make_new_file
+ls -lsah
+vi make_new_file
+date +%s -> 1599826567
+make_new_file
+cd ..
+cd temp-files/
+ls -> file-1599826612.txt
+crontab -e
+    -> no crontab for aman - using an empty one
+
+       Select an editor.  To change later, run 'select-editor'.
+       1. /bin/nano        <---- easiest
+       2. /usr/bin/vim.basic
+       3. /usr/bin/vim.tiny
+       4. /bin/ed
+   
+       Choose 1-4 [1]: 2  #TYPE 2
+
+    # Edit this file to introduce tasks to be run by cron.
+    # 
+    # Each task to run has to be defined through a single line
+    # indicating with different fields when the task will be run
+    # and what command to run for the task
+    # 
+    # To define the time you can provide concrete values for
+    # minute (m), hour (h), day of month (dom), month (mon),
+    # and day of week (dow) or use '*' in these fields (for 'any').
+    # 
+    # Notice that tasks will be started based on the cron's system
+    # daemon's notion of time and timezones.
+    # 
+    # Output of the crontab jobs (including errors) is sent through
+    # email to the user the crontab file belongs to (unless redirected).
+    # 
+    # For example, you can run a backup of all your user accounts
+    # at 5 a.m every week with:
+    # 0 5 * * 1 tar -zcf /var/backups/home.tgz /home/
+    # 
+    # For more information see the manual pages of crontab(5) and cron(8)
+    # 
+    # m h  dom mon
+
+    * *\2 * * * /home/aman/my_bin/make_new_file
+
+
+
+crontab -e -> I am opening at time execute the file mean run the script
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ NOT ADDED THIS LINE ON YOUR TERMIANL
+
+ls -> file-1599826612.txt  file-1599827761.txt
+
+(every two minute add onefile)
+ls -> file-1599826612.txt  file-1599827761.txt  file-1599828001.txt
+ls -> file-1599826612.txt  file-1599827761.txt  file-1599828001.txt  file-15998280021.txt
+group 1 end ----------
+
+
+(guide ) start ---01
+
+        1 *         ===> minutes
+        2 *         ===> hours
+        3 *         ===> day of the month
+        4 *         ===> month
+        5 *         ===> day of the week
+
+        *	        any value
+        ,	        value list separator
+        -	        range of values
+        /	        step values
+        @yearly	    (non-standard)
+        @annually	(non-standard)
+        @monthly	(non-standard)
+        @weekly	    (non-standard)
+        @daily	    (non-standard)
+        @hourly	    (non-standard)
+        @reboot	    (non-standard)
+
+(guide ) end ---01
+
+
+
+
+group 2 start ---------- (CUSTOMIZE YOUR SHELL)
+
+echo $PS1
+\[\e]0;\u@\h: \w\a\]${debian_chroot:+($debian_chroot)}\[\033[01;32m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$
+PS1="hello there " -> my prompt shows hello there
+
+    -> PS1="/$ " (INSIDE OF YOU TYPE THIS) AFTER TYPE any
+    -> vi .bashrc -> INSIDE OF FILE TYPE (source ~/.bash-powerline.sh)
+
+    -> source .bash-powerline.sh ->change less color colors 
+
+group 2 end ----------
+
+
+
+
+group 3 start ---------- (COLOR & AWESOME BASH)
+group 3 END ---------- (COLOR & AWESOME BASH)
+
+stop crontab
